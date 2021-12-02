@@ -12,6 +12,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#19857b',
+      card: '#e4e4e4',
     },
     error: {
       main: red.A400,

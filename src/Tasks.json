@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "text": "Job Interview",
+        "day": "Feb 5th at 14:30",
+        "reminder": true
+    },
+    {
+        "id": 2,
+        "text": "Learn React Native",
+        "day": "Jan 7th at 07:30",
+        "reminder": true
+    },
+    {
+        "id": 3,
+        "text": "Food Shopping",
+        "day": "Feb 5th at 08:30",
+        "reminder": true
+    }
+]
