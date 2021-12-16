@@ -31,6 +31,14 @@ function App() {
     }
 ])
 
+const deleteTask = (id) => {
+  setTasks(tasks.filter((task)=> task.id !== id))
+}
+
+const toggleReminder = (id) => {
+  setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task))
+}
+
   return (
     <div className="App">
       <Grid xs={11} md={12} sx={{ mx: 'auto' }}>
@@ -41,7 +49,9 @@ function App() {
             </Typography>
             <Button ctatext='Add' />
           </Box>
-          <Tasks tasks={tasks} />
+          {tasks.length > 0 ? 
+          <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> 
+          : 'no task' }
         </Container>
       </Grid>
     </div>
