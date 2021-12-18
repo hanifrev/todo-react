@@ -40,3 +40,25 @@
 .task.reminder {
   border-left: 5px solid green;
 }
+
+.formclass {
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-list {
+  padding-bottom: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-label {
+  padding-right: 1rem;
+}
+
+.form-btn {
+  width: 100%;
+}

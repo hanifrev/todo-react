@@ -8,8 +8,10 @@ import Header from './components/header';
 import Button from './components/button';
 import Tasks from './components/Tasks';
 // import tasks from './Tasks.json'
+import AddTask from './components/AddTask';
 
 function App() {
+  const [showAdd, setShowAdd] = useState(false)
   const [tasks, setTasks] = useState([
     {
         "id": 1,
@@ -27,9 +29,17 @@ function App() {
         "id": 3,
         "text": "Food Shopping",
         "day": "Feb 5th at 08:30",
-        "reminder": true
+        "reminder": false
     }
 ])
+
+const addTask = (task) => {
+  // console.log(task)
+  const id = Math.floor(Math.random() * 10000) +1
+  // console.log(id)
+  const newTask = { id, ...task }
+  setTasks([...tasks, newTask])
+ }
 
 const deleteTask = (id) => {
   setTasks(tasks.filter((task)=> task.id !== id))
@@ -43,12 +53,19 @@ const toggleReminder = (id) => {
     <div className="App">
       <Grid xs={11} md={12} sx={{ mx: 'auto' }}>
         <Container maxWidth="sm" sx={{ my: 3, mx: 'auto', border: 1, borderRadius: '12px' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 4 }}>
+          
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', my: 3 }}> 
             <Typography variant="h5" component="div" gutterBottom>
               <Header title='Task Runner' />
             </Typography>
-            <Button ctatext='Add' />
+            <Button 
+              ctatext={showAdd ? "Close" : "Add"}  
+              colorbtn={showAdd ? "error" : "primary"}
+              onAdd={() => setShowAdd(!showAdd)} 
+              // show={showAdd}
+            />
           </Box>
+          { showAdd && <AddTask onAdd={addTask} />}
           {tasks.length > 0 ? 
           <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> 
           : 'no task' }
